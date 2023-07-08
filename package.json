@@ -17,9 +17,7 @@
     "singleQuote": true
   },
   "scripts": {
-    "retrosantander": "PROJECT=retrosantander npm run serve",
-    "retrogipuzkoa": "PROJECT=retrogipuzkoa npm run serve",
-    "guregipuzkoa": "PROJECT=guregipuzkoa npm run serve",
+    "retrogasteiz": "PROJECT=retrogasteiz npm run serve",
     "serve": "live-server --host=${PROJECT} --entry-file=${PROJECT}/index.html httpdocs",
     "build": "scripts/build.sh"
   },
