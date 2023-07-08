@@ -11,12 +11,10 @@ import {
 const projects = {
   retrogasteiz: {
     name: 'Retrogasteiz',
-    database: '/retrogasteiz/jesus-elosegui.json',
+    database: '/retrogasteiz/arabaartxiboa_1.json',
     placeholder: (count) =>
-      `Explora ${count} imágenes históricas de la Colección Jesús Elósegui`,
+      `Explora ${count} imágenes históricas del Archivo de Álava`,
     image: (id) =>
-      // `https://www.guregipuzkoa.eus/wp-content/gallery/jesus-elosegui/${id}.jpg`,
-      // `https://retrogipuzkoa.s3.eu-south-2.amazonaws.com/jpeg/${id}.jpg`,
       `https://retrogasteiz.blob.core.windows.net/retrogasteiz/webp/${id}.webp`,
     details: (id) =>
       `https://retrogasteiz.blob.core.windows.net/retrogasteiz/rekognition/mock.json`,
