@@ -17,7 +17,7 @@
     "singleQuote": true
   },
   "scripts": {
-    "retrogasteiz": "PROJECT=retrogasteiz npm run serve",
+    "retrogasteiz": "cp httpdocs/retrogasteiz/index.html index.html && PROJECT=retrogasteiz npm run serve",
     "serve": "live-server --host=${PROJECT} --entry-file=${PROJECT}/index.html httpdocs",
     "build": "scripts/build.sh"
   },
