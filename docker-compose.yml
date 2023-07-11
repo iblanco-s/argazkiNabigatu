@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: iocio005/retrogasteiz:latest
     ports:
       - '8080:80'
     environment:
