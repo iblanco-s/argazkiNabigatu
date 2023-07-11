@@ -5,6 +5,6 @@ services:
       dockerfile: Dockerfile
     image: iocio005/retrogasteiz:latest
     ports:
-      - '8080:80'
+      - '8888:80'
     environment:
       - PROJECT=httpdocs

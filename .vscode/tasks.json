@@ -1,26 +1,18 @@
 {
+  "version": "2.0.0",
   "tasks": [
     {
       "isBackground": true,
-      "label": "Arranca Retrosantander",
-      "script": "retrosantander",
-      "type": "npm"
-    },
-    {
-      "isBackground": true,
-      "label": "Arranca Retrogipuzkoa",
-      "script": "retrogipuzkoa",
-      "type": "npm"
-    },
-    {
-      "isBackground": true,
-      "label": "Arranca GureGipuzkoa",
-      "runOptions": {
-        "runOn": "folderOpen"
+      "label": "Arranca Retrogasteiz",
+      "script": "retrogasteiz",
+      "type": "npm",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
       },
-      "script": "guregipuzkoa",
-      "type": "npm"
+      "problemMatcher": []
     }
-  ],
-  "version": "2.0.0"
+  ]
 }
