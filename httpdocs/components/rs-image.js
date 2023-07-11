@@ -64,7 +64,7 @@ template.innerHTML = `
     }
   </style>
   <figure>
-    <img loading="lazy" />
+    <img />
   </figure>
 `
 

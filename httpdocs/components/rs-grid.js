@@ -150,22 +150,28 @@ customElements.define(
 
       const start = page * this.itemsPerPage
       const end = (1 + page) * this.itemsPerPage
-      const images = app.results.slice(start, end).map((result) => result.id)
+      const newImages = app.results.slice(start, end).map((result) => result.id)
 
-      if (!images.length) {
+      if (!newImages.length) {
         return
       }
 
-      this.container.innerHTML += images
-        .map((id, i) => `<rs-image id="${id}" class="hidden"></rs-image>`)
-        .join('')
+      newImages.forEach((id) => {
+        const rsImage = document.createElement('rs-image')
+        rsImage.setAttribute('id', id)
+        rsImage.classList.add('hidden')
+        this.container.appendChild(rsImage)
+      })
 
       const interval = setInterval(() => {
         this.pending = [...this.container.querySelectorAll('rs-image')].filter(
           (image) => !image.complete
         ).length
-
-        app.loading = 1 - this.pending / images.length
+        // A veces el numero de pending crece y no baja a 0. Incluso llega a ser superior a 25 y nunca deberia pasar esto
+        console.log('Pending ' + this.pending)
+        console.log('Length ' + newImages.length)
+        console.log(1 - this.pending / newImages.length)
+        app.loading = 1 - this.pending / newImages.length
 
         if (!this.pending) {
           clearInterval(interval)

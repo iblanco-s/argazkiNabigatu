@@ -1,29 +1,26 @@
 {
-  "name": "retrosantander",
+  "name": "retrogasteiz",
   "private": true,
-  "description": "Un experimento de Jaime Gómez-Obregón con los archivos fotográficos públicos.",
-  "homepage": "https://github.com/JaimeObregon/retrosantander",
+  "description": "Un experimento de Iker Ocio Zuazo con los archivos fotográficos públicos.",
+  "homepage": "https://github.com/0x10-z/retrogasteiz",
   "bugs": {
-    "url": "https://github.com/JaimeObregon/retrosantander/issues"
+    "url": "https://github.com/0x10-z/retrogasteiz/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JaimeObregon/retrosantander.git"
+    "url": "https://github.com/0x10-z/retrogasteiz.git"
   },
   "license": "Véase el fichero LICENSE",
-  "author": "Jaime Gómez-Obregón",
+  "author": "Iker Ocio Zuazo",
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "scripts": {
     "retrogasteiz": "cp httpdocs/retrogasteiz/index.html index.html && PROJECT=retrogasteiz npm run serve",
-    "serve": "live-server --host=${PROJECT} --entry-file=${PROJECT}/index.html httpdocs",
-    "build": "scripts/build.sh"
+    "serve": "live-server --host=${PROJECT} --entry-file=${PROJECT}/index.html httpdocs"
   },
   "devDependencies": {
-    "@aws-sdk/client-rekognition": "^3.309.0",
-    "@aws-sdk/client-s3": "^3.309.0",
     "live-server": "^1.1.0",
     "prettier": "^2.7.1"
   }
