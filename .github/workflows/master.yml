@@ -29,6 +29,7 @@ jobs:
       - name: Build and push Docker Compose
         run: |
           docker-compose -f docker-compose.deployment.yml push
+          sleep 50
 
       - name: Configure SSH
         run: |
@@ -39,4 +40,4 @@ jobs:
 
       - name: Deploy code
         run: |
-          ssh azureuser@20.124.2.0 "./retrogasteiz/deploy.sh"
+          ssh azureuser@20.124.2.0 "cd ./retrogasteiz && ./deploy.sh"
