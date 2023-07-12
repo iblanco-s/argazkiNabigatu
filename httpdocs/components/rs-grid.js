@@ -122,6 +122,7 @@ customElements.define(
 
         image.areas = areas
         app.panel = { details, faces, objects, tags }
+        history.pushState(null, null, `/?i=${id}`)
       })
 
       document.addEventListener('keyup', (event) => {
@@ -332,6 +333,7 @@ customElements.define(
         image.classList.remove('selected')
         image.areas = false
       })
+      history.pushState(null, null, `/`)
     }
 
     get selected() {
