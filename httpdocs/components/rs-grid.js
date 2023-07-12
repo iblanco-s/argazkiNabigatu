@@ -167,10 +167,7 @@ customElements.define(
         this.pending = [...this.container.querySelectorAll('rs-image')].filter(
           (image) => !image.complete
         ).length
-        // A veces el numero de pending crece y no baja a 0. Incluso llega a ser superior a 25 y nunca deberia pasar esto
-        console.log('Pending ' + this.pending)
-        console.log('Length ' + newImages.length)
-        console.log(1 - this.pending / newImages.length)
+
         app.loading = 1 - this.pending / newImages.length
 
         if (!this.pending) {
