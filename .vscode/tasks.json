@@ -4,15 +4,11 @@
     {
       "isBackground": true,
       "label": "Arranca Retrogasteiz",
-      "script": "retrogasteiz",
-      "type": "npm",
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared"
+      "runOptions": {
+        "runOn": "folderOpen"
       },
-      "problemMatcher": []
+      "script": "retrogasteiz",
+      "type": "npm"
     }
   ]
 }
