@@ -128,6 +128,10 @@ customElements.define(
         event.key === 'Escape' && this.restore()
       })
 
+      document.addEventListener('wheel', (event) => {
+        ;(event.deltaY > 0 || event.deltaY < 0) && this.restore()
+      })
+
       window.addEventListener('resize', this.arrange.bind(this))
     }
 
