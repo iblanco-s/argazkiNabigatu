@@ -1,6 +1,7 @@
 import { app } from '../modules/retrosantander.js'
 import './rs-license-cdis.js'
 import './rs-license-cc-by-sa.js'
+import './rs-license-cc-by-nc-sa.js'
 
 const component = 'rs-panel'
 const template = document.createElement('template')
@@ -357,6 +358,8 @@ customElements.define(
         this.footer.innerHTML = `<rs-license-cdis></rs-license-cdis>`
       } else if (details.license === 'cc-by-sa') {
         this.footer.innerHTML = `<rs-license-cc-by-sa></rs-license-cc-by-sa>`
+      } else if (details.license === 'CC BY-NC-SA 4.0') {
+        this.footer.innerHTML = `<rs-license-cc-by-nc-sa></rs-license-cc-by-nc-sa>`
       }
 
       panel.classList.remove('hidden')
