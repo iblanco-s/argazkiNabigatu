@@ -122,10 +122,15 @@ customElements.define(
 
         image.areas = areas
         app.panel = { details, faces, objects, tags }
+        history.pushState(null, null, `/?i=${id}`)
       })
 
       document.addEventListener('keyup', (event) => {
         event.key === 'Escape' && this.restore()
+      })
+
+      document.addEventListener('wheel', (event) => {
+        ;(event.deltaY > 0 || event.deltaY < 0) && this.restore()
       })
 
       window.addEventListener('resize', this.arrange.bind(this))
@@ -328,6 +333,7 @@ customElements.define(
         image.classList.remove('selected')
         image.areas = false
       })
+      history.pushState(null, null, `/`)
     }
 
     get selected() {

@@ -8,6 +8,7 @@ import '../components/rs-grid.js'
 import '../components/rs-panel.js'
 import '../components/rs-help.js'
 import '../components/rs-loading.js'
+import { handlePermalink } from '../components/rs-permalink.js'
 
 const debounceDelay = 350
 
@@ -99,6 +100,36 @@ const app = {
     this.title = layer ? grid.activeLayer : database.find(id).title
   },
 
+  // Muestra la imágen con el ID existente en `this.permalink`.
+  searchImage() {
+    const results = database.firstAndSome(app.permalink)
+
+    this.results = results
+
+    clearTimeout(this.timeout)
+    this.timeout = setTimeout(() => {
+      const url = new URL(document.location.href)
+      if (app.permalink !== url.searchParams.get('i')) {
+        history.pushState(
+          null,
+          null,
+          app.permalink ? `/?i=${app.permalink}` : '/'
+        )
+      }
+
+      this.restore()
+      this.results.length ? grid.append() : grid.clear()
+
+      // zoom image
+      // const grid = document.querySelector('rs-grid')
+      // const button = grid.container.querySelector('rs-image#' + app.permalink)
+      // button.click()
+
+      this.title = ''
+      help.hidden = Boolean(this.results.length)
+    }, debounceDelay)
+  },
+
   // Lanza una búsqueda del término existente en `this.query`.
   search() {
     const { results, suggestions } = database.search(this.query)
@@ -160,6 +191,10 @@ await database.load(app.project.database)
 const url = new URL(document.location.href)
 const count = database.count.toLocaleString()
 app.query = url.searchParams.get('q')
+
+const permalink = url.searchParams.get('i')
+handlePermalink(permalink)
+
 app.placeholder = app.project.placeholder(count)
 app.title = ''
 

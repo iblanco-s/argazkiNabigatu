@@ -54,6 +54,14 @@ const database = {
     return database.records.find((item) => item.id === id)
   },
 
+  // Devuelve un registro en particular a partir de su `id` y varias imágenes más.
+  firstAndSome: (id) => {
+    const results = database.records
+      .sort(() => Math.random() - 0.5)
+      .slice(0, maxSuggestions)
+    return [database.records.find((item) => item.id === id), ...results]
+  },
+
   // Cursa una búsqueda en la base de datos y devuelve los resultados de la misma
   // y las sugerencias de búsqueda para el término empleado.
   search: (string) => {
