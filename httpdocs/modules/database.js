@@ -58,7 +58,7 @@ const database = {
   firstAndSome: (id) => {
     const results = database.records
       .sort(() => Math.random() - 0.5)
-      .slice(0, maxSuggestions)
+      .slice(0, 25)
     return [database.records.find((item) => item.id === id), ...results]
   },
 
