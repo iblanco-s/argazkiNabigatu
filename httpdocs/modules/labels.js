@@ -912,6 +912,7 @@ const labels = {
   Forge: 'Fragua',
   Fork: 'Tenedor',
   'Formula One': 'Formula Uno',
+  'Formal Wear': 'Ropa formal',
   Fort: 'Fuerte',
   Fossil: 'Fósil',
   'Fountain Pen': 'Pluma fuente',
