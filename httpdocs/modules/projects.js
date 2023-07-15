@@ -11,16 +11,16 @@ import {
 const projects = {
   retrogasteiz: {
     name: 'Retrogasteiz',
-    //database: '/retrogasteiz/arabaartxiboa_1.json',
-    database: '/retrogasteiz/arabaartxiboa_1_debug.json',
+    database: '/retrogasteiz/arabaartxiboa_1.json',
+    //database: '/retrogasteiz/arabaartxiboa_1_debug.json',
     placeholder: (count) =>
       `Explora ${count} imágenes históricas del Archivo de Álava`,
     image: (id) =>
-      //`https://retrogasteiz.blob.core.windows.net/retrogasteiz/webp/${id}.webp`,
-      `https://retrogasteiz.blob.core.windows.net/retrogasteiz/debug/${id}.webp`,
+      `https://retrogasteiz.blob.core.windows.net/retrogasteiz/webp/${id}.webp`,
+    //`https://retrogasteiz.blob.core.windows.net/retrogasteiz/debug/${id}.webp`,
     details: (id) =>
-      //`https://retrogasteiz.blob.core.windows.net/retrogasteiz/rekognition/${id}.json`,
-      `https://retrogasteiz.blob.core.windows.net/retrogasteiz/debug/mock.json`,
+      `https://retrogasteiz.blob.core.windows.net/retrogasteiz/rekognition/${id}.json`,
+    //`https://retrogasteiz.blob.core.windows.net/retrogasteiz/debug/mock.json`,
     about: '/retrogasteiz/about.html',
     help: '/retrogasteiz/help.html',
     panel: (details) => `
