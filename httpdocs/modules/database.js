@@ -171,6 +171,7 @@ const database = {
           id: `object-${accumulator.length + i}`,
           name: `${labels[object.Name]} ${i + 1}`,
           title: labels[object.Name],
+          label: object.Name,
           confidence: instance.Confidence,
           top: instance.BoundingBox.Top,
           left: instance.BoundingBox.Left,

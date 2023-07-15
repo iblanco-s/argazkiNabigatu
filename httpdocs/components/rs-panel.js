@@ -341,7 +341,10 @@ customElements.define(
         .join('')
 
       panel.querySelector('section#objects ul').innerHTML = objects
-        .map((object) => `<li data-id="${object.id}">${object.name}</li>`)
+        .map(
+          (object) =>
+            `<li data-id="${object.id}" data-label="${object.label}">${object.name}</li>`
+        )
         .join(', ')
 
       panel.querySelector('section#tags ul').innerHTML = tags
