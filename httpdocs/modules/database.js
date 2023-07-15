@@ -57,7 +57,7 @@ const database = {
   // Devuelve un registro en particular a partir de su `id` y varias imágenes más.
   firstAndSome: (id) => {
     const results = database.records
-      .sort(() => Math.random() - 0.5)
+      .sort((a, b) => a.title.localeCompare(b.title))
       .slice(0, 25)
     return [database.records.find((item) => item.id === id), ...results]
   },
@@ -68,7 +68,9 @@ const database = {
     const query = normalize(string)
 
     if (!query.length) {
-      const results = database.records.sort(() => Math.random() - 0.5)
+      const results = database.records.sort((a, b) =>
+        a.title.localeCompare(b.title)
+      )
       const suggestions = []
       return { results, suggestions }
     }
