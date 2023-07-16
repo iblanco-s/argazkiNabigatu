@@ -56,10 +56,13 @@ const database = {
 
   // Devuelve un registro en particular a partir de su `id` y varias imágenes más.
   firstAndSome: (id) => {
-    const results = database.records
-      .sort((a, b) => a.title.localeCompare(b.title))
-      .slice(0, 25)
-    return [database.records.find((item) => item.id === id), ...results]
+    const index = database.records.findIndex((item) => item.id === id)
+
+    if (index === -1) {
+      throw new Error('No se encontró el registro con el id proporcionado')
+    }
+
+    return database.records.slice(index, index + 26)
   },
 
   // Cursa una búsqueda en la base de datos y devuelve los resultados de la misma
@@ -68,9 +71,7 @@ const database = {
     const query = normalize(string)
 
     if (!query.length) {
-      const results = database.records.sort((a, b) =>
-        a.title.localeCompare(b.title)
-      )
+      const results = database.records
       const suggestions = []
       return { results, suggestions }
     }
@@ -86,7 +87,6 @@ const database = {
           .filter((word) => word.length)
       )
       .filter((value, index, word) => word.indexOf(value) === index)
-      .sort((a, b) => a.localeCompare(b))
       .filter((word) => word !== query)
       .slice(0, maxSuggestions)
 
