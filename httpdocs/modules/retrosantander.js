@@ -1,5 +1,6 @@
 import { database } from './database.js'
 import { projects } from './projects.js'
+import History from './history.js'
 import '../components/rs-logo.js'
 import '../components/rs-title.js'
 import '../components/rs-search.js'
@@ -8,7 +9,7 @@ import '../components/rs-grid.js'
 import '../components/rs-panel.js'
 import '../components/rs-help.js'
 import '../components/rs-loading.js'
-import { handlePermalink } from '../components/rs-permalink.js'
+import { handlePermalink } from './permalink.js'
 
 const debounceDelay = 350
 
@@ -53,6 +54,8 @@ const normalize = (string) => {
 
 const app = {
   results: [],
+
+  history: new History(),
 
   // Establece el título visible en la cabecera de sitio.
   set title(caption) {
@@ -110,11 +113,12 @@ const app = {
     this.timeout = setTimeout(() => {
       const url = new URL(document.location.href)
       if (app.permalink !== url.searchParams.get('i')) {
-        history.pushState(
-          null,
-          null,
-          app.permalink ? `/?i=${app.permalink}` : '/'
-        )
+        // history.pushState(
+        //   null,
+        //   null,
+        //   app.permalink ? `/?i=${app.permalink}` : '/'
+        // )
+        this.history.addParam(History.I, app.permalink)
       }
 
       this.restore()
@@ -150,7 +154,8 @@ const app = {
     this.timeout = setTimeout(() => {
       const url = new URL(document.location.href)
       if (app.query !== url.searchParams.get('q')) {
-        history.pushState(null, null, app.query ? `/?q=${app.query}` : '/')
+        //history.pushState(null, null, app.query ? `/?q=${app.query}` : '/')
+        app.query && this.history.addParam(History.Q, app.query)
       }
 
       this.restore()
@@ -190,12 +195,33 @@ await database.load(app.project.database)
 // Inicializa la aplicación.
 const url = new URL(document.location.href)
 const count = database.count.toLocaleString()
-app.query = url.searchParams.get('q')
 
-const permalink = url.searchParams.get('i')
-handlePermalink(permalink)
+const query = url.searchParams.get('q')
+const photoId = url.searchParams.get('i')
+const page = url.searchParams.get('p')
+
+app.query = query
+
+handlePermalink(photoId)
 
 app.placeholder = app.project.placeholder(count)
 app.title = ''
+
+if (query) {
+  // Realizar acción basada en el parámetro 'q'
+  console.log(`Realizando búsqueda con el query: ${query}`)
+  // ...
+} else if (photoId) {
+  // Realizar acción basada en el parámetro 'i'
+  console.log(`Mostrando la primera foto con el ID: ${photoId}`)
+  // ...
+} else if (page) {
+  // Realizar acción basada en el parámetro 'p'
+  console.log(`Cargando contenido a partir de la página: ${page}`)
+  // ...
+} else {
+  // No se proporcionaron parámetros válidos
+  console.log('No se proporcionaron parámetros válidos en la URL')
+}
 
 export { app, database, escape, normalize }

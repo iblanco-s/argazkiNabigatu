@@ -1,4 +1,5 @@
 import { app, database } from '../modules/retrosantander.js'
+import History from '../modules/history.js'
 import './rs-image.js'
 
 const component = 'rs-grid'
@@ -122,7 +123,8 @@ customElements.define(
 
         image.areas = areas
         app.panel = { details, faces, objects, tags }
-        history.pushState(null, null, `/?i=${id}`)
+        // history.pushState(null, null, `/?i=${id}`)
+        app.history.addParam(History.I, id)
       })
 
       document.addEventListener('keyup', (event) => {
@@ -134,6 +136,7 @@ customElements.define(
       this.container.addEventListener(
         'wheel',
         (event) => {
+          app.history.removeParam(History.I)
           this.restore()
         },
         { passive: true }
@@ -152,6 +155,10 @@ customElements.define(
     append(page = 0) {
       this.ready = false
       this.page = page
+      if (page > 0) {
+        //history.pushState(null, null, `/?p=${page}`)
+        app.history.addParam(History.P, page)
+      }
 
       if (!page) {
         this.clear()
@@ -168,6 +175,7 @@ customElements.define(
       newImages.forEach((id) => {
         const rsImage = document.createElement('rs-image')
         rsImage.setAttribute('id', id)
+        rsImage.setAttribute('label-id', 'label-' + id)
         rsImage.classList.add('hidden')
         this.container.appendChild(rsImage)
       })
@@ -303,6 +311,9 @@ customElements.define(
 
     zoom(element) {
       if (this.selected) {
+        //history.pushState(null, null, `/`)
+        app.history.removeParam(History.I)
+        app.history.removeParam(History.Q)
         this.restore()
         return
       }
@@ -337,7 +348,6 @@ customElements.define(
         image.classList.remove('selected')
         image.areas = false
       })
-      //history.pushState(null, null, `/`)
     }
 
     get selected() {
