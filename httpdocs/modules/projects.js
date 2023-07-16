@@ -6,6 +6,7 @@ import {
   beaker,
   link,
   annotation,
+  whatsapp,
 } from './icons.js'
 
 const projects = {
@@ -27,6 +28,12 @@ const projects = {
       <dd id="link">
         <a href="https://photo.araba.eus/r/item/${details.permalink}" target="_blank">
           Ver #${details.permalink} en Photo Araba
+        </a>
+      </dd>
+      <dt title="Compartir">${whatsapp}</dt>
+      <dd id="share">
+        <a href="https://api.whatsapp.com/send?text=Mira esta imagen que he encontrado en https://retrogasteiz.com/?i=${details.id}" target="_blank">
+          Compartir en Whatsapp
         </a>
       </dd>
     `,

@@ -17,6 +17,6 @@ export const handlePermalink = (permalink) => {
   }
 
   if (permalink) {
-    setTimeout(checkElementPresence, 1000)
+    setTimeout(checkElementPresence, 2000)
   }
 }
