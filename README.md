@@ -1,32 +1,26 @@
 # Un experimento con los archivos fotográficos públicos
 
-Retrosantander es un experimento personal de Jaime Gómez-Obregón con los archivos fotográficos históricos de varias instituciones. El objetivo es aplicar los nuevos algoritmos de visión artificial y las capacidades de las modernas interfaces de usuario web para explorar formas innovadoras de poner estos archivos a disposición de la ciudadanía.
+**Retrogasteiz** es un experimento personal de [Iker Ocio Zuazo](https://ikerocio.com), (inspirado en el trabajo de [Jaime Gómez-Obregón](https://twitter.com/JaimeObregon) como autor original) con las más de 100.000 imágenes del Archivo de Álava, digitalizado por la Diputación Foral de Álava - Araba Foru Aldundia y publicado con licencia abierta [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) por la misma Diputación en [https://photo.araba.eus](https://photo.araba.eus).
 
-En [esta conferencia](https://www.youtube.com/watch?v=Wj88WEDOqgw) (en Sevilla, en marzo de 2023) para la Asociación de Archiveros de Andalucía comparto mi visión y peripecia en este proyecto.
+Con ello, pretendo explorar **otras formas de poner en valor un archivo fotográfico público**, aplicando ideas como la visión artificial o las interfaces de usuario modernas.
 
-# Retrosantander
+**Retrogasteiz** es también una demostración de cómo **la difusión abierta** de las bases de datos públicas permite a la ciudadanía construir iniciativas nuevas y compartidas con todos.
 
-Apliqué por primera vez estas ideas al fondo fotográfico que publicaba en su sitio web el **Centro de Documentación de la Imagen de Santander (CDIS)**, entidad dependiente del Ayuntamiento de Santander. [La reacción](https://twitter.com/JaimeObregon/status/1523955161151983616) del Ayuntamiento fue cerrar el sitio web del CDIS y retirar su archivo fotográfico de internet. Esto supuso el final de Retrosantander, a los pocos días de haber nacido.
+# Retrogasteiz
 
-[![Retrosantander](/docs/assets/retrosantander.jpg)](https://retrosantander.com)
+He creado el proyecto Retrogasteiz con el objetivo de brindar a todos un acceso rápido, sencillo y eficiente al archivo fotográfico de Álava. Este proyecto pone de relieve los archivos fotográficos y las historias contadas tras los pixeles de cada imágen donde éstas son las protagonistas.
 
-El proyecto sigue desplegado en [retrosantander.com](https://retrosantander.com), aunque por la razón expresada las fotografías ya no están disponibles. [Este vídeo](https://twitter.com/JaimeObregon/status/1523590262760505345) resume los cómos y porqués de esta frustrada iniciativa personal con el patrimonio fotográfico municipal de mi ciudad.
+Debo dar las gracias a la Diputación Foral de Álava por proveer todas las imágenes con licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es), ya que sin ello esta plataforma no podría existir.
 
-Para la posteridad queda [la detallada autopsia que hice](docs/cdis.md) del difunto portal del CDIS.
+Todas las imágenes cuentan con un hipervinculo donde encontrar la fuente original de la imágen en [https://photo.araba.eus](https://photo.araba.eus).
 
-# Retrogipuzkoa
+[![Celedon](/httpdocs/retrogasteiz/poster.png)]()
 
-Descartada la resignación, decidí seguir el experimento con el Fondo Fotográfico Jesús Elósegui, digitalizado entre 2002 y 2006 por la Sociedad de Ciencias Aranzadi y publicado con licencia abierta por la Diputación Foral de Gipuzkoa.
+Este proyecto a nacido a partir del [siguiente proyecto](https://github.com/JaimeObregon/retrosantander) desarrollado por [Jaime Gómez-Obregón](https://twitter.com/JaimeObregon) que ha dado a luz a:
 
-Así he podido continuar en [retrogipuzkoa.com](https://retrogipuzkoa.com) lo que inicié en Retrosantander. [En este hilo Twitter](https://twitter.com/JaimeObregon/status/1524494203614543876) he explicado mis razones.
-
-# GureGipuzkoa
-
-Retrogipuzkoa captó la atención de la Diputación Foral de Gipuzkoa, que me ha permitido y animado a extender mi proyecto con la colección de Jesús Elósegui al resto de colecciones contenidas en su portal GureGipuzkoa («nuestra Guipúzcoa»).
-
-Nace así una nueva versión de GureGipuzkoa, resultado de conectar todas las colecciones del portal de la Diputación con la herramienta que he ido construyendo y refinando para explorar estos archivos fotográficos.
-
-Aparte he escrito la documentación [sobre el _scraping_ a guregipuzkoa.eus](/docs/guregipuzkoa.md).
+- [retrosantander.com](https://retrosantander.com)
+- [retrogipuzkoa.com](https://retrogipuzkoa.com)
+- [guregipuzkoa.com](https://guregipuzkoa.com)
 
 # Características y limitaciones
 
@@ -34,37 +28,25 @@ Aparte he escrito la documentación [sobre el _scraping_ a guregipuzkoa.eus](/do
 
 1. **Visión artificial**. He pasado las fotografías de los archivos por el servicio Amazon Rekognition, de visión artificial. Los ficheros JSON resultantes están alojados en el subdirectorio `details` de cada proyecto, y son requeridos por la interfaz de usuario cuando este amplía una fotografía.
 
-1. **Visor dinámico**. [TBD].
-
-1. **Multicolección**. [TBD].
-
-1. **Cartografía**. El proyecto GureGipuzkoa ilustra la utilización de un mapa vectorial interactivo de la provincia, lo que hace posible vincular fotografías a municipios y mostrar todas las fotografías de uno.
-
-1. **Soporte multilingüe**. El programa implementa una interfaz de usuario traducible. Se incorporan tres: castellano, inglés y euskera.
-
 # Arquitectura
 
-Este repositorio es multiproyecto, y en la actualidad aloja tres proyectos:
+Este repositorio es multiproyecto, basado en el proyecto original de Jaime pero actualmente solo ocupa un único proyecto:
 
-1. **Retrosantander**, desplegado en retrosantander.com: proyecto frustrado por la retirada del archivo del CDIS por parte del Ayuntamiento de Santander.
-
-1. **Retrogipuzkoa**, desplegado en retrogipuzkoa.com.
-
-1. **GureGipuzkoa**, desplegado en guregipuzkoa.com y actualmente en desarrollo. No confundir con guregipuzkoa.eus, que es el portal original de la Diputación Foral de Gipuzkoa que guregipuzkoa.com pretende superar.
+1. **Retrogasteiz**, desplegado en [retrogasteiz.com](https://retrogasteiz.com).
 
 La arquitectura de la aplicación, por lo tanto, pretende servir a múltiples archivos fotográficos desde una misma base de código común y extensible.
 
 El programa determina qué proyecto servir en función del nombre del _host_. Para desarrollar en local es preciso, por lo tanto, añadir las entradas necesarias a `/etc/hosts`. Por ejemplo:
 
 ```
-127.0.0.1 retrosantander retrogipuzkoa guregipuzkoa
+127.0.0.1 retrogasteiz retrosantander retrogipuzkoa guregipuzkoa
 ```
 
 Para iniciar el entorno de desarrollo basta instalar las dependencias y arrancar el servidor web invocando el script de `package.json` correspondiente al proyecto que se desea servir:
 
 ```console
 npm install
-npm run retrogipuzkoa
+npm run retrogasteiz
 ```
 
 La variable de entorno `$PROJECT` determina qué proyecto se servirá.
@@ -81,46 +63,17 @@ El código se adhiere al formato conferido por [Prettier](https://prettier.io) c
 
 # Despliegue
 
-Con cada _push_ a la rama _main_ se lanza el despliegue de todos los proyectos en Netlify. Allí hay tantos sitios configurados como proyectos alberga este repositorio.
-
-Todos los sitios en Netlify son idénticos y están conectados a este mismo repositorio. Cada uno tiene una variable de entorno `PROJECT` asignada al proyecto correspondiente; esto es, `retrosantander`, `retrogipuzkoa` o `guregipuzkoa`.
-
-Adicionalmente, la aplicación sabe qué proyecto servir por el nombre del _host_ desde el que es servida. Por ejemplo, cuando el nombre del _host_ es `retrogipuzkoa.com`, `retrogipuzkoa.localhost` o `retrogipuzkoa`, se sirve el archivo fotográfico y las personalizaciones correspondientes a `Retrogipuzkoa`. Esto se discierne en `app.js`.
+Con cada _push_ a la rama _develop_ se lanza el despliegue del proyecto en [retrogasteiz.com](https://retrogasteiz.com).
 
 # Alojamiento de los archivos
 
-- **Retrosantander**. No tengo permiso del CDIS del Ayuntamiento de Santander para servir el archivo fotográfico del CDIS. Por esta razón Retrosantander solicita los archivos directamente al servidor web del CDIS. Cuando el Ayuntamiento [ha retirado](https://twitter.com/JaimeObregon/status/1523955161151983616) este servidor y todo el archivo, Retrosantander ha dejado de poder brindarte acceso a él.
-
-- **Retrogipuzkoa**. La colección fotográfica explorable desde Retrogipuzkoa es servida directamente por el portal guregipuzkoa.eus, operado por la Diputación Foral de Gipuzkoa.
-
-- **GureGipuzkoa**. He obtenido permiso de la Diputación para copiar y distribuir el archivo fotográfico del portal guregipuzkoa.eus, que es distribuido por la Diputación con licencia Creative Commons. Yo he descargado (_scraping_) y copiado en Amazon S3 este archivo (fotografías y metadatos), y mi portal guregipuzkoa.com lo sirve desde ahí y no desde guregipuzkoa.eus como sucede en Retrogipuzkoa.
+- **Retrogasteiz**. La colección de imágenes que se puede explorar desde Retrogasteiz se encuentra alojada en Azure Blob Storage. Inicialmente, todos los archivos se servían en formatos jpg/png, pero han sido convertidos a webp para disminuir en más de un tercio el tamaño de cada archivo. Esto conlleva varios beneficios: acelera las descargas, optimiza la experiencia del usuario, minimiza el volumen de datos necesarios para explorar el sitio web y contribuye a una mayor sostenibilidad ambiental.
 
 # Almacenamiento y visión artificial
 
-Utilizo Amazon Web Services (AWS) para almacenar y servir (Amazon S3) el archivo fotográfico de GureGipuzkoa y como servicio de visión artificial (Amazon Rekognition).
+Para el almacenamiento y distribución del archivo fotográfico de RetroGasteiz, hago uso de Azure Blob Storage. En lo que respecta al servicio de visión artificial, opté por Amazon Rekognition de AWS. Esto se debe a que Azure ha decidido interrumpir la oferta de estos servicios para mitigar el riesgo de malas prácticas, tal como se detalla en este [artículo](https://azure.microsoft.com/es-es/blog/responsible-ai-investments-and-safeguards-for-facial-recognition/).
 
-En este repositorio incluyo el _script_ necesario para descargar las fotografías y metadatos del portal guregipuzkoa.eus (_scraping_), optimizar el tamaño de las fotografías convirtiéndolas al formato WEBP, cargarlas a Amazon S3 y aplicar sobre ellas los comandos proporcionados por Amazon Rekognition y obtener y procesar sus respuestas.
-
-Las operaciones sobre los servicios AWS requieren de una cuenta de AWS y [un fichero local](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/loading-node-credentials-shared.html) con las credenciales y configuración del usuario de AWS.
-
-En una instalación macOS:
-
-- `~/.aws/config`
-
-  ```ini
-  [default]
-  region = us-east-1
-  ```
-
-- `~/.aws/credentiales`
-
-  ```ini
-  [default]
-  aws_access_key_id = <YOUR_ACCESS_KEY_ID>
-  aws_secret_access_key = <YOUR_SECRET_ACCESS_KEY>
-  ```
-
-El _script_ toma las credenciales y configuración de estos ficheros locales privados, de tal manera que así no hay riesgo de incorporarlas accidentalmente al repositorio ni necesidad de establecerlas en variables de entorno.
+Este repositorio no incluye el _script_ necesario para descargar las fotografías y metadatos del portal de retrogasteiz.com.
 
 # Licencia
 
