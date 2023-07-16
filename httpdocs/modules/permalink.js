@@ -17,8 +17,6 @@ export const handlePermalink = (permalink) => {
   }
 
   if (permalink) {
-    app.permalink = permalink
-    app.searchImage()
     setTimeout(checkElementPresence, 1000)
   }
 }

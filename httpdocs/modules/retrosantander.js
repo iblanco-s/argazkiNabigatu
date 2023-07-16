@@ -55,6 +55,9 @@ const normalize = (string) => {
 const app = {
   results: [],
 
+  _permalink: '',
+  page: 0,
+
   history: new History(),
 
   // Establece el título visible en la cabecera de sitio.
@@ -65,6 +68,17 @@ const app = {
   // Establece el título por defecto de la interfaz.
   set placeholder(caption) {
     title.placeholder = caption
+  },
+
+  // Devuelve la imagen que has establecido previamente.
+  get permalink() {
+    return this._permalink
+  },
+
+  // Establece una imagen en concreto que quieres ver.
+  set permalink(permalink) {
+    this._permalink = permalink
+    permalink && this.searchImage()
   },
 
   // Devuelve el término de búsqueda actual.
@@ -124,11 +138,6 @@ const app = {
       this.restore()
       this.results.length ? grid.append() : grid.clear()
 
-      // zoom image
-      // const grid = document.querySelector('rs-grid')
-      // const button = grid.container.querySelector('rs-image#' + app.permalink)
-      // button.click()
-
       this.title = ''
       help.hidden = Boolean(this.results.length)
     }, debounceDelay)
@@ -159,7 +168,11 @@ const app = {
       }
 
       this.restore()
-      this.results.length ? grid.append() : grid.clear()
+      if (this.page > 0) {
+        this.results.length ? grid.append(this.page) : grid.clear()
+      } else {
+        this.results.length ? grid.append() : grid.clear()
+      }
       this.title = ''
       help.hidden = Boolean(this.results.length)
     }, debounceDelay)
@@ -198,9 +211,16 @@ const count = database.count.toLocaleString()
 
 const query = url.searchParams.get('q')
 const photoId = url.searchParams.get('i')
-const page = url.searchParams.get('p')
+const page = parseInt(url.searchParams.get('p'))
 
+// Orden de prioridad 1 -> Busquedas
 app.query = query
+
+// Orden de prioridad 2 -> Si buscas una foto en concreto, no buscas otra cosa
+app.permalink = photoId
+
+// Orden de prioridad 3 -> Si buscas cargar una página en concreto, no deberias estar buscando nada más
+app.page = page
 
 handlePermalink(photoId)
 
