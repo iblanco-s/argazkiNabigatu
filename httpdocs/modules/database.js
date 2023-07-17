@@ -1,5 +1,6 @@
 import { normalize } from './retrosantander.js'
 import { labels } from '../modules/labels.js'
+import ApiService from '../modules/apiService.js'
 
 // Umbral de confianza en la visión artificial.
 // Los objetos detectados por debajo de éste umbral serán ignorados.
@@ -30,6 +31,7 @@ const prettify = (title) => {
 }
 
 const database = {
+  apiService: new ApiService('http://myapi.com'),
   records: [],
 
   // Carga en `this.records` el fichero JSON con los datos.
@@ -40,7 +42,7 @@ const database = {
     database.records = json.map((item) => ({
       ...item,
       title: prettify(item.title),
-      index: normalize(item.title),
+      index: normalize(item.title.concat(' ').concat(item.caption)),
     }))
   },
 
