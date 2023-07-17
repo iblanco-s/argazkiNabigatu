@@ -205,7 +205,6 @@ const database = {
 
       return { faces, objects, tags, areas }
     } catch (error) {
-      console.error('Ha habido un error en la petición fetch: ', error)
       return { faces: [], objects: [], tags: [], areas: [] }
     }
   },
