@@ -108,13 +108,18 @@ const app = {
     return grid.selected
   },
 
-  // Destaca un objeto de la visión artificial, cuando hay una imagen seleccionada.
-  set activeLayer(layer) {
+  async setActiveLayerAsync(layer) {
     panel.activeLayer = layer
     grid.activeLayer = layer
 
     const id = this.selected.getAttribute('id')
-    this.title = layer ? grid.activeLayer : database.find(id).title
+    const record = database.find(id)
+    this.title = layer ? grid.activeLayer : record.title
+  },
+
+  // Destaca un objeto de la visión artificial, cuando hay una imagen seleccionada.
+  set activeLayer(layer) {
+    this.setActiveLayerAsync(layer).catch((_) => {})
   },
 
   // Muestra la imágen con el ID existente en `this.permalink`.

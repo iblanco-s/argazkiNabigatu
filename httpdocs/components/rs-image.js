@@ -87,11 +87,8 @@ customElements.define(
       this.figure = this.shadowRoot.querySelector('figure')
       this.id = this.getAttribute('id')
 
-      const details = database.find(this.id)
       const src = app.project.image(this.id)
-
       this.img.setAttribute('src', src)
-      this.img.setAttribute('alt', escape(details.title))
 
       this.figure.addEventListener('mouseover', (event) => {
         const isDiv = event.target instanceof HTMLDivElement
@@ -99,7 +96,7 @@ customElements.define(
           return
         }
 
-        app.activeLayer = event.target.dataset.id
+        event.target && (app.activeLayer = event.target.dataset.id)
       })
 
       this.figure.addEventListener('mouseout', (event) => {
@@ -108,6 +105,10 @@ customElements.define(
           app.activeLayer = false
         }
       })
+
+      this.dispatchEvent(
+        new CustomEvent('rsImageLoaded', { detail: { id: this.id } })
+      )
     }
 
     set areas(areas) {

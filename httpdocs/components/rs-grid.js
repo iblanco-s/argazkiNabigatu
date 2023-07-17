@@ -1,4 +1,4 @@
-import { app, database } from '../modules/retrosantander.js'
+import { app, database, escape } from '../modules/retrosantander.js'
 import History from '../modules/history.js'
 import './rs-image.js'
 
@@ -92,7 +92,7 @@ customElements.define(
 
       observer.observe(this.hr)
 
-      this.container.addEventListener('mouseover', (event) => {
+      this.container.addEventListener('mouseover', async (event) => {
         const id = event.target.getAttribute('id')
         app.title = id ? database.find(id).title : ''
       })
@@ -123,7 +123,6 @@ customElements.define(
 
         image.areas = areas
         app.panel = { details, faces, objects, tags }
-        // history.pushState(null, null, `/?i=${id}`)
         app.history.addParam(History.I, id)
       })
 
@@ -177,6 +176,13 @@ customElements.define(
         rsImage.setAttribute('id', id)
         rsImage.setAttribute('label-id', 'label-' + id)
         rsImage.classList.add('hidden')
+
+        rsImage.addEventListener('rsImageLoaded', async (event) => {
+          const details = database.find(event.detail.id)
+          const image = rsImage.shadowRoot.querySelector('img')
+          image.setAttribute('alt', escape(details.title))
+        })
+
         this.container.appendChild(rsImage)
       })
 
