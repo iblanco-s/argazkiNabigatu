@@ -43,6 +43,11 @@ const projects = {
           Descargar imágen
         </a>
       </dd>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="colorize_${details.id}" name="colorize_${details.id}">
+        <span class="checkmark"></span>
+        Colorea
+      </label>
     `,
     logo: `
     <svg viewBox="224.453 182.491 525.316 117.789" height="117.789">
