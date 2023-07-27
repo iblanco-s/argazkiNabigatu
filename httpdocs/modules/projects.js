@@ -39,7 +39,7 @@ const projects = {
       </dd>
       <dt title="Descargar">${download}</dt>
       <dd id="share">
-        <a href="/download/${details.id}.webp" download>
+        <a href="/download/${details.id}.webp" download="${details.title}_${details.id}.jpg">
           Descargar imágen
         </a>
       </dd>
