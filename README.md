@@ -69,6 +69,11 @@ Con cada _push_ a la rama _develop_ se lanza el despliegue del proyecto en [retr
 
 - **Retrogasteiz**. La colección de imágenes que se puede explorar desde Retrogasteiz se encuentra alojada en Azure Blob Storage. Inicialmente, todos los archivos se servían en formatos jpg/png, pero han sido convertidos a webp para disminuir en más de un tercio el tamaño de cada archivo. Esto conlleva varios beneficios: acelera las descargas, optimiza la experiencia del usuario, minimiza el volumen de datos necesarios para explorar el sitio web y contribuye a una mayor sostenibilidad ambiental.
 
+* Total GB en formato jpg: **232.59GB**
+* Total GB en formato webp: **77.53GB**
+
+![./docs/stats.png](./docs/stats.png)
+
 # Almacenamiento y visión artificial
 
 Para el almacenamiento y distribución del archivo fotográfico de RetroGasteiz, hago uso de Azure Blob Storage. En lo que respecta al servicio de visión artificial, opté por Amazon Rekognition de AWS. Esto se debe a que Azure ha decidido interrumpir la oferta de estos servicios para mitigar el riesgo de malas prácticas, tal como se detalla en este [artículo](https://azure.microsoft.com/es-es/blog/responsible-ai-investments-and-safeguards-for-facial-recognition/).
