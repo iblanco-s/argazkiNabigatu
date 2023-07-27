@@ -39,7 +39,7 @@ const projects = {
       </dd>
       <dt title="Descargar">${download}</dt>
       <dd id="share">
-        <a href="https://retrogasteiz.blob.core.windows.net/retrogasteiz/webp/${details.id}.webp" download>
+        <a href="/download/${details.id}.webp" download>
           Descargar imágen
         </a>
       </dd>
