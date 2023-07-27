@@ -7,6 +7,7 @@ import {
   link,
   annotation,
   whatsapp,
+  download,
 } from './icons.js'
 
 const projects = {
@@ -34,6 +35,12 @@ const projects = {
       <dd id="share">
         <a href="https://api.whatsapp.com/send?text=Mira esta imagen que he encontrado en https://retrogasteiz.com/?i=${details.id}" target="_blank">
           Compartir en Whatsapp
+        </a>
+      </dd>
+      <dt title="Descargar">${download}</dt>
+      <dd id="share">
+        <a href="https://retrogasteiz.blob.core.windows.net/retrogasteiz/webp/${details.id}.webp" download>
+          Descargar imágen
         </a>
       </dd>
     `,
