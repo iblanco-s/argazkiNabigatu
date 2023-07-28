@@ -360,17 +360,35 @@ customElements.define(
       const url = app.project.image(details.id)
 
       var checkbox = this.shadowRoot.getElementById(`colorize_${details.id}`)
+
+      function getImageElement(src, defaultUrl) {
+        const imgElement1 = app.selected.shadowRoot.querySelector(
+          `img[src="${src}"]`
+        )
+        const imgElement2 = app.selected.shadowRoot.querySelector(
+          `img[src="${defaultUrl}"]`
+        )
+
+        return imgElement1 ? imgElement1 : imgElement2
+      }
+
       checkbox.addEventListener('change', function () {
+        const originalUrl = url
+        const colorizedUrl = url.replace('/webp/', '/colorized/') // Cambia el atributo src al de la imagen coloreada
+        const defaultUrl = '/retrogasteiz/unavailable.png'
+        let imgElement
+
         if (checkbox.checked) {
-          const imgElement = app.selected.shadowRoot.querySelector(
-            `img[src="${url}"]`
-          )
-          imgElement.src = url.replace('/webp/', '/colorized/') // Cambia el atributo src al de la imagen coloreada
+          imgElement = getImageElement(originalUrl, defaultUrl)
+          imgElement.src = colorizedUrl
         } else {
-          const imgElement = app.selected.shadowRoot.querySelector(
-            `img[src="${url.replace('/webp/', '/colorized/')}"]`
-          )
-          imgElement.src = url // Restaura el atributo src
+          imgElement = getImageElement(colorizedUrl, defaultUrl)
+          imgElement.src = originalUrl
+        }
+
+        // En caso de error, cambia a la imagen por defecto
+        imgElement.onerror = function () {
+          imgElement.src = defaultUrl
         }
       })
 
