@@ -210,6 +210,63 @@ template.innerHTML = `
         width: calc(50% - 25px);
       }
     }
+
+    /* Estilo para el contenedor del checkbox */
+      .custom-checkbox {
+        display: block;
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 12px;
+        margin-top:12px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /* Estilo para el checkbox oculto */
+      .custom-checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* Estilo para la casilla de verificación personalizada */
+      .custom-checkbox .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #ccc;
+        border-radius: 4px;
+      }
+
+      /* Estilo cuando el checkbox está marcado */
+      .custom-checkbox input:checked ~ .checkmark {
+        background-color: #2196f3;
+      }
+
+      /* Estilo para la marca de verificación que aparecerá cuando el checkbox esté marcado */
+      .custom-checkbox .checkmark:after {
+        content: '';
+        position: absolute;
+        display: none;
+      }
+
+      /* Mostrar la marca de verificación cuando el checkbox está marcado */
+      .custom-checkbox input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      /* Estilo para la marca de verificación */
+      .custom-checkbox .checkmark:after {
+        left: 6px;
+        top: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
   </style>
   <aside class="hidden">
     <button>
@@ -301,6 +358,39 @@ customElements.define(
       panel.querySelector('section#objects h2 span').innerHTML = objects.length
 
       const url = app.project.image(details.id)
+
+      var checkbox = this.shadowRoot.getElementById(`colorize_${details.id}`)
+
+      function getImageElement(src, defaultUrl) {
+        const imgElement1 = app.selected.shadowRoot.querySelector(
+          `img[src="${src}"]`
+        )
+        const imgElement2 = app.selected.shadowRoot.querySelector(
+          `img[src="${defaultUrl}"]`
+        )
+
+        return imgElement1 ? imgElement1 : imgElement2
+      }
+
+      checkbox.addEventListener('change', function () {
+        const originalUrl = url
+        const colorizedUrl = url.replace('/webp/', '/colorized/') // Cambia el atributo src al de la imagen coloreada
+        const defaultUrl = '/retrogasteiz/unavailable.png'
+        let imgElement
+
+        if (checkbox.checked) {
+          imgElement = getImageElement(originalUrl, defaultUrl)
+          imgElement.src = colorizedUrl
+        } else {
+          imgElement = getImageElement(colorizedUrl, defaultUrl)
+          imgElement.src = originalUrl
+        }
+
+        // En caso de error, cambia a la imagen por defecto
+        imgElement.onerror = function () {
+          imgElement.src = defaultUrl
+        }
+      })
 
       const containerWidth = panel.querySelector('ul').offsetWidth / facesPerRow
       const containerHeight = containerWidth

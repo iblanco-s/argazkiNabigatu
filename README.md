@@ -26,7 +26,15 @@ Este proyecto a nacido a partir del [siguiente proyecto](https://github.com/Jaim
 
 1. **Búsqueda instantánea**. A diferencia de la mayoría de los archivos, las búsquedas no se cursan en el servidor sino directamente en el navegador del usuario. Para este fin se envía el índice completo de las colecciones fotográficas al navegador del usuario. Así se pueden obtener resultados instantáneos de las búsquedas al tiempo que se teclea. Esto impone la limitación de que no se pueda buscar en todas las colecciones simultáneamente.
 
-1. **Visión artificial**. He pasado las fotografías de los archivos por el servicio Amazon Rekognition, de visión artificial. Los ficheros JSON resultantes están alojados en el subdirectorio `details` de cada proyecto, y son requeridos por la interfaz de usuario cuando este amplía una fotografía.
+2. **Visión artificial**. He pasado las fotografías de los archivos por el servicio Amazon Rekognition, de visión artificial. Los ficheros JSON resultantes están alojados en el subdirectorio `details` de cada proyecto, y son requeridos por la interfaz de usuario cuando este amplía una fotografía.
+
+3. **Coloreado artificial**. Las imágenes han sido coloreadas por una inteligencia artificial llamada [DeOldify](https://github.com/jantic/DeOldify). Todos los coloreados han sido computerizados de forma local para servir la versión coloreada al vuelo.
+
+![./docs/compare1.jpg](./docs/compare1.jpg)
+
+![./docs/compare2.jpg](./docs/compare2.jpg)
+
+![./docs/compare3.jpg](./docs/compare3.jpg)
 
 # Arquitectura
 

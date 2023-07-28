@@ -62,6 +62,13 @@ template.innerHTML = `
     figure div.object.active {
       background: #dc262670;
     }
+
+    img {
+      -webkit-transition: opacity 0.5s ease-in-out;
+      -moz-transition: opacity 0.5s ease-in-out;
+      -o-transition: opacity 0.5s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
+    }
   </style>
   <figure>
     <img />
