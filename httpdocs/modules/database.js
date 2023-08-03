@@ -40,7 +40,13 @@ const database = {
     database.records = json.map((item) => ({
       ...item,
       title: prettify(item.title),
-      index: normalize(item.title.concat(' ').concat(item.caption)),
+      index: normalize(
+        item.title
+          .concat('. ')
+          .concat(item.caption)
+          .concat('. ')
+          .concat(item.datestamp)
+      ),
     }))
   },
 

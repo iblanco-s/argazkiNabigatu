@@ -13,7 +13,7 @@ import {
 const projects = {
   retrogasteiz: {
     name: 'Retrogasteiz',
-    database: '/retrogasteiz/arabaartxiboa_1.min.json',
+    database: '/retrogasteiz/arabaartxiboa_1.json',
     placeholder: (count) =>
       `Explora ${count} imágenes históricas del Archivo de Álava`,
     image: (id) =>
@@ -24,7 +24,7 @@ const projects = {
     help: '/retrogasteiz/help.html',
     panel: (details) => `
       <dt title="Descripción">${annotation}</dt>
-      <dd>${details.caption}</dd>
+      <dd>${details.caption}. Fecha ${details.datestamp}</dd>
       <dt title="Referencia">${link}</dt>
       <dd id="link">
         <a href="https://photo.araba.eus/r/item/${details.permalink}" target="_blank">

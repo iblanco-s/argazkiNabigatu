@@ -154,6 +154,8 @@ template.innerHTML = `
   </label>
 `
 
+const debounceDelay = 500
+
 customElements.define(
   component,
 
@@ -167,6 +169,7 @@ customElements.define(
 
     constructor() {
       super()
+      this.searchTimeout = null
       const root = this.attachShadow({ mode: 'open' })
       root.append(template.content.cloneNode(true))
     }
@@ -241,7 +244,11 @@ customElements.define(
 
     set query(value) {
       this.value = this.input.value = value ?? ''
-      app.search()
+      //app.search()
+      clearTimeout(this.searchTimeout) // Cancela cualquier temporizador previo
+      this.searchTimeout = setTimeout(() => {
+        app.search()
+      }, debounceDelay)
     }
 
     get selected() {
