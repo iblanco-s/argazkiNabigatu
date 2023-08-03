@@ -9,6 +9,7 @@ import '../components/rs-grid.js'
 import '../components/rs-panel.js'
 import '../components/rs-help.js'
 import '../components/rs-loading.js'
+import '../components/rs-text-loading.js'
 import { handlePermalink } from './permalink.js'
 
 const debounceDelay = 350
@@ -21,6 +22,7 @@ const title = document.querySelector('rs-title')
 const panel = document.querySelector('rs-panel')
 const search = document.querySelector('rs-search')
 const loading = document.querySelector('rs-loading')
+const textLoading = document.querySelector('rs-text-loading')
 
 // Escapa una cadena para interpolarla de manera segura en HTML
 const escape = (string) =>
@@ -208,7 +210,9 @@ logo.innerHTML = app.project.logo
   help.innerHTML = await response.text()
 })()
 
+textLoading.startLoading()
 await database.load(app.project.database)
+textLoading.hide()
 
 // Inicializa la aplicación.
 const url = new URL(document.location.href)
