@@ -344,6 +344,12 @@ customElements.define(
         return
       }
 
+      const excludeLabels = ['Female', 'Male', 'Woman', 'Man', 'Child', 'Adult']
+
+      data.objects = data.objects.filter(
+        (item) => !excludeLabels.includes(item.label)
+      )
+
       const { details, faces, objects, tags } = data
 
       this.details.innerHTML = app.project.panel(details)
