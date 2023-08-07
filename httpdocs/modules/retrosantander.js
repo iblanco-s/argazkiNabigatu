@@ -210,9 +210,7 @@ logo.innerHTML = app.project.logo
   help.innerHTML = await response.text()
 })()
 
-textLoading.startLoading()
-await database.load(app.project.database)
-textLoading.hide()
+await database.load(app.project.database, textLoading)
 
 // Inicializa la aplicación.
 const url = new URL(document.location.href)

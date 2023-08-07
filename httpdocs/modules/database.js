@@ -33,9 +33,52 @@ const database = {
   records: [],
 
   // Carga en `this.records` el fichero JSON con los datos.
-  load: async (url) => {
+  load: async (url, textLoading) => {
+    textLoading.startLoading()
     const response = await fetch(url)
-    const json = await response.json()
+
+    if (!response.ok) {
+      throw new Error('Error al descargar el archivo')
+    }
+
+    const totalLength = 40000000
+    let receivedLength = 0
+    const chunks = []
+
+    const reader = response.body.getReader()
+
+    while (true) {
+      const { done, value } = await reader.read()
+
+      if (done) {
+        break
+      }
+
+      chunks.push(value)
+      receivedLength += value.length
+
+      const progress = (receivedLength / totalLength) * 100
+      console.log(
+        `Descargado: ${receivedLength} de ${totalLength} bytes (${progress.toFixed(
+          2
+        )}%)`
+      )
+
+      textLoading.setProgress(progress)
+
+      // Aquí puedes actualizar una barra de progreso en la UI
+      // Por ejemplo: updateProgressBar(progress);
+    }
+
+    textLoading.setProgress(100)
+    const blob = new Blob(chunks)
+    const text = await blob.text()
+    const jsonData = JSON.parse(text)
+
+    // Aquí puedes procesar los datos JSON
+    console.log(jsonData)
+
+    const json = jsonData
 
     database.records = json.map((item) => ({
       ...item,
@@ -48,6 +91,7 @@ const database = {
           .concat(item.datestamp)
       ),
     }))
+    textLoading.hide()
   },
 
   // Retorna el número de registros en la base de datos.
