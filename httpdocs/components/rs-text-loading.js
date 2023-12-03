@@ -45,7 +45,8 @@ customElements.define(
   component,
 
   class extends HTMLElement {
-    placeholder = 'Cargando imágenes...' // Texto de carga
+    progress = 0
+    placeholder = 'Cargando imágenes... ' + this.progress + '%' // Texto de carga
     delay = { typing: 50 } // Retardo de escritura
     cite
     loadingInterval
@@ -83,6 +84,11 @@ customElements.define(
 
     startLoading() {
       this.text = this.placeholder
+    }
+
+    setProgress(value) {
+      this.progress = value.toFixed(2)
+      this.cite.textContent = 'Cargando imágenes... ' + this.progress + '%'
     }
 
     hide() {
