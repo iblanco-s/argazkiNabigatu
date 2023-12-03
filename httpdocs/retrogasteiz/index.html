@@ -194,6 +194,16 @@
       gtag('js', new Date())
 
       gtag('config', 'G-51509FB778')
+
+      var currentDate = new Date()
+      var currentMonth = currentDate.getMonth()
+
+      if (currentMonth === 11) {
+        var script = document.createElement('script')
+        script.defer = true
+        script.src = 'https://app.embed.im/snow.js?12'
+        document.head.appendChild(script)
+      }
     </script>
   </body>
 </html>

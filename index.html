@@ -27,11 +27,7 @@
     <meta property="og:url" content="https://retrogasteiz.com" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    />
+    <link rel="stylesheet" href="/retrogasteiz/googlefonts.css" />
 
     <base href="/retrogasteiz.com/" />
 
@@ -198,6 +194,16 @@
       gtag('js', new Date())
 
       gtag('config', 'G-51509FB778')
+
+      var currentDate = new Date()
+      var currentMonth = currentDate.getMonth()
+
+      if (currentMonth === 11) {
+        var script = document.createElement('script')
+        script.defer = true
+        script.src = 'https://app.embed.im/snow.js?12'
+        document.head.appendChild(script)
+      }
     </script>
   </body>
 </html>

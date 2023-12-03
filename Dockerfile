@@ -6,7 +6,7 @@ COPY . .
 
 RUN npm install
 
-ENV PROJECT="httpdocs"
+ENV PROJECT="retrogasteiz"
 ENV PORT=80
 
 EXPOSE 80
