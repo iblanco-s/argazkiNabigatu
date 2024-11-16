@@ -1,5 +1,0 @@
-services:
-  retrogasteiz:
-    image: iocio005/retrogasteiz:latest
-    ports:
-      - '8888:80'

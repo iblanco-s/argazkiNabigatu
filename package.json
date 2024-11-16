@@ -1,25 +1,11 @@
 {
-  "name": "retrogasteiz",
+  "name": "argazki-nabigatu",
   "private": true,
-  "description": "Un experimento de Iker Ocio Zuazo con los archivos fotográficos públicos.",
-  "homepage": "https://github.com/0x10-z/retrogasteiz",
-  "bugs": {
-    "url": "https://github.com/0x10-z/retrogasteiz/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/0x10-z/retrogasteiz.git"
-  },
+  "description": "Navegador de imágenes de la colección fotográfica Argazki Irekia.",
   "license": "Véase el fichero LICENSE",
-  "author": "Iker Ocio Zuazo",
   "prettier": {
     "semi": false,
     "singleQuote": true
-  },
-  "scripts": {
-    "retrogasteiz": "cp httpdocs/retrogasteiz/index.html index.html && PROJECT=retrogasteiz npm run serve",
-    "retro-debug": "cp httpdocs/retrogasteiz/index.html index.html && PROJECT=retro-debug npm run serve",
-    "serve": "live-server --host=${PROJECT} --entry-file=${PROJECT}/index.html httpdocs"
   },
   "devDependencies": {
     "live-server": "^1.1.0",
