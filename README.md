@@ -1,4 +1,6 @@
 # ArgazkiNabigatu: Explorador de Argazki Irekia con IA
+![argazkinabigatu](https://github.com/user-attachments/assets/9c7a7eaa-a845-4adc-9e6c-d57401eddffe)
+
 
 ArgazkiNabigatu es un experimento para mejorar la experiencia de navegación del archivo fotográfico de Argazki Irekia, aplicando tecnologías modernas de IA y una interfaz de usuario intuitiva. El proyecto busca hacer más accesible este valioso patrimonio fotográfico a la ciudadanía, ademas de eliminar la necesidad de clasificar las imagenes manualmente como se estaba haciendo hasta ahora.
 
@@ -42,4 +44,4 @@ Esto significa que puedes utilizar este programa para usos personales o comercia
 Para cumplir con este último punto, debes mantener en tu sitio web una mención visible a los autores originales:
 - Jaime Gómez-Obregón ([RetroSantander](https://github.com/JaimeObregon/retrosantander))
 - Iker Ocio Zuazo ([RetroGasteiz](https://github.com/0x10-z/retrogasteiz))
--Y una mencion a este repo
+- Y una mención a este repo
